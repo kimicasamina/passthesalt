@@ -3,7 +3,7 @@ import { User, Login } from '../../db/models'
 export const getAllUsers = async (req, res, next) => {
     try {
         const users = await User.findAll({
-            include: ['logins']
+            include: ['logins', 'notes']
             
         })
         return res.json({ users })
@@ -16,7 +16,7 @@ export const getAllUsers = async (req, res, next) => {
 export const getUserByUuid = async (req, res, next) => {
     const uuid = req.params.uuid
     try {
-    const user = await User.findOne({ where: { uuid } })
+    const user = await User.findOne({ where: { uuid },    include: ['logins', 'notes'] })
     return res.json(user)
     } catch (error) {
         console.log(error)
@@ -27,7 +27,7 @@ export const getUserByUuid = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
     const uuid = req.params.uuid
     try {
-    const user = await User.findOne({ where: { uuid } })
+    const user = await User.findOne({ where: { uuid },    include: ['logins', 'notes'] })
     user.username = req.body.name 
     user.email = req.body.email 
     user.password = req.body.password
@@ -44,9 +44,9 @@ export const deleteUser = async (req, res, next) => {
     const uuid = req.params.uuid
     try {
     const user = await User.findOne({ where: { uuid } })
-    const deletedUser = await user.destroy()
+    await user.destroy()
     return res
-        .json({ user: deletedUser})
+        .json({ msg: "Successfully deleted a user" })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ error: error.message })

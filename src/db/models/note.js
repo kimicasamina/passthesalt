@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Login extends Model {
+  class Note extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       return {...this.get(), id: undefined, user_id: undefined}
     }
   }
-  Login.init({
+  Note.init({
     uuid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4
@@ -33,38 +33,18 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: { msg: "Please provide a name" },
       },
     },
-    email: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: {
-        msg: "Email is already taken"
+      validate: {
+        notNull: { msg: "A content is required" },
+        notEmpty: { msg: "Please provide a content" },
       },
-      validate: {
-        notNull: { msg: "An email is required" },
-        notEmpty: { msg: "Please provide an email" },
-        isEmail: { msg: "Please use the correct email format: user@example.com" }
-      }
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: { msg: "A password is required" },
-        notEmpty: { msg: "Please provide a password" },
-        len: {
-          args: [8, 20],
-          msg: "The password must be 8 to 20 characters long"
-        }
-      }
-    },
-    website: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
   }, {
     sequelize,
-    tableName: 'logins',
-    modelName: 'Login'
+    tableName: 'notes',
+    modelName: 'Note'
   });
-  return Login;
+  return Note;
 };
