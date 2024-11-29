@@ -24,15 +24,38 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: {
+        msg: "Name is already taken"
+      },
+      validate: {
+        notNull: { msg: "A name is required" },
+        notEmpty: { msg: "Please provide a name" },
+      },
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: {
+        msg: "Email is already taken"
+      },
+      validate: {
+        notNull: { msg: "An email is required" },
+        notEmpty: { msg: "Please provide an email" },
+        isEmail: { msg: "Please use the correct email format: user@example.com" }
+      }
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notNull: { msg: "A password is required" },
+        notEmpty: { msg: "Please provide a password" },
+        len: {
+          args: [8, 20],
+          msg: "The password must be 8 to 20 characters long"
+        }
+      }
     },
     website: {
       type: DataTypes.STRING,

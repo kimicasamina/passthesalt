@@ -1,4 +1,4 @@
-import { Login } from '../../db/models'
+import { Login, User } from '../../db/models'
 
 export const getAllLogins = async (req, res, next) => {
 
@@ -15,10 +15,10 @@ export const getAllLogins = async (req, res, next) => {
 }
 
 export const getLoginByUuid = async (req, res, next) => {
-    const { loginUuid } = req.params.loginUuid
+    const { uuid } = req.params.uuid
     try {
         const login = await Login.findOne({
-            where: { uuid: loginUuid },
+            where: { uuid },
             include: ['user']
         })
         return res.json({ login })
@@ -29,13 +29,11 @@ export const getLoginByUuid = async (req, res, next) => {
 }
 
 export const createNewLogin = async (req, res, next) => {
-    const { userUuid, name, email, password, website } = req.body
+    const { userUuid } = req.body
     try {
-const login = await Login.create({ 
-    name, email, password, website,
-    user_id: user.id })
-    console.log(user)
-    console.log(login)
+        const user = await User.findOne({ where: {uuid: userUuid} })
+    const login = await Login.create({ user_id: user.id, ...req.body })
+  
     return res.json(login)
     } catch (error) {
         console.log(error)
@@ -64,8 +62,8 @@ export const deleteLogin = async (req, res, next) => {
     const uuid = req.params.uuid
     try {
     const login = await Login.findOne({ where: { uuid }, include: ['user'] })
-    const deletedLogin = await login.destroy()
-    return res.json({login: deleteLogin})
+    await login.destroy()
+    return res.json({msg: "Login deleted successfully"})
     } catch (error) {
         console.log(error)
         return res.status(500).json({ error: error.message })
