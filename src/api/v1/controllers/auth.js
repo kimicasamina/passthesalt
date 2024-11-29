@@ -53,7 +53,7 @@ export const loginUser = async (req, res, next) => {
 
         console.log('valid')
 
-        const token = generateToken(user.id)
+        const token = generateToken(user.uuid)
         res.cookie('access_token', token, {
             httpOnly: true,
             expiresIn: '30m',
@@ -61,7 +61,7 @@ export const loginUser = async (req, res, next) => {
         res.status(201).json({
             msg: 'User successfully logged in.',
             user: {
-                id: user.uuid,
+                uuid: user.uuid,
                 username: user.username,
                 email: user.email
             },

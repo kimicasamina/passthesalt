@@ -142,3 +142,7 @@ Fri 29	09:03:04 PM	a77dd82e-37de-4b45-9182-600ee07175f3	POST	undefined	/api/v1/a
 Fri 29	09:04:35 PM	929e956b-1b1b-49c7-be0e-dc5170ca4ade	POST	undefined	/api/v1/auth/login/}
 Fri 29	09:04:54 PM	5e4f66f5-4901-4118-8e75-c9c408c8d724	POST	undefined	/api/v1/auth/login/}
 Fri 29	09:07:26 PM	5c7a6985-b9d2-41d9-a822-fd0dfe154b41	GET	undefined	/api/v1/auth/}
+Fri 29	09:09:13 PM	a6bca921-5e30-4fec-ad4b-04fb1af64479	GET	undefined	/api/v1/auth/logout/}
+Fri 29	09:09:17 PM	96529e06-ca15-4625-8842-635a0e313449	DELETE	undefined	/api/v1/auth/logout/}
+Fri 29	09:11:26 PM	0745c2ab-4448-4d9e-ac02-d9518bc33bdd	POST	undefined	/api/v1/auth/login/}
+Fri 29	09:11:39 PM	07afb0f3-d706-4e48-9156-aae8245763cf	DELETE	undefined	/api/v1/auth/logout/}
