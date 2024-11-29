@@ -1,0 +1,69 @@
+import { User, Login } from '../../db/models'
+
+export const getAllUsers = async (req, res, next) => {
+    try {
+        const users = await User.findAll({
+            include: ['logins']
+            
+        })
+        return res.json({ users })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: 'Something went wrong' })
+    }
+}
+
+export const getUserByUuid = async (req, res, next) => {
+    const uuid = req.params.uuid
+    try {
+    const user = await User.findOne({ where: { uuid } })
+    return res.json(user)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: error.message })
+    }
+}
+
+export const updateUser = async (req, res, next) => {
+    const uuid = req.params.uuid
+    try {
+    const user = await User.findOne({ where: { uuid } })
+    user.username = req.body.name 
+    user.email = req.body.email 
+    user.password = req.body.password
+
+    await user.save()
+    return res.json(user)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: error.message })
+    }
+}
+
+export const deleteUser = async (req, res, next) => {
+    const uuid = req.params.uuid
+    try {
+    const user = await User.findOne({ where: { uuid } })
+    const deletedUser = await user.destroy()
+    return res
+        .json({ user: deletedUser})
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: error.message })
+    }
+}
+
+export const createUser = async (req, res, next) => {
+    const { username, email, password } = req.body
+    try {
+        const user = await User.create({ username, email, password })
+        return res.json(user)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json(error)
+    }
+}
+
+
+
+
