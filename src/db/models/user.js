@@ -1,4 +1,7 @@
 'use strict';
+
+const bcrypt = require('bcrypt')
+
 const {
   Model
 } = require('sequelize');
@@ -13,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasMany(Login, { foreignKey: 'user_id', as: 'logins' })
       this.hasMany(Note, { foreignKey: 'user_id', as: 'notes' })
+    }
+
+    validPassword(password){
+      return bcrypt.compareSync(password, this.password);
     }
 
     toJSON(){
@@ -62,7 +69,24 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     tableName: 'users',
-    modelName: 'User'
+    modelName: 'User',
+    hooks: {
+      beforeCreate: (user) => {
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync(user.password, salt);
+      }
+    },
+    instanceMethods: {
+      validatePassword: (password) => {
+        return bcrypt.compareSync(password, this.password);
+    }
+    } ,
+    scopes: {
+      withoutPassword: {
+          attributes: { exclude: ['password'] },
+      },
+  },
   });
   return User;
 };
+

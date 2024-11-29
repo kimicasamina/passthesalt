@@ -1,4 +1,4 @@
-import { User, Login, Note } from '../../db/models'
+import { User, Login, Note } from '../../../db/models'
 
 export const getAllNotes = async (req, res, next) => {
     try {

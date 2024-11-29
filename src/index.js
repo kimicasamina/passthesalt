@@ -8,9 +8,10 @@ import helmet from 'helmet'
 import cors from 'cors'
 import { corsOption } from './middleware/corsOption'
 import { logger } from './middleware/logEvents'
-import userRouter from './api/routes/user'
-import loginRouter from './api/routes/login'
-import noteRouter from './api/routes/note'
+import userRouter from './api/v1/routes/user'
+import loginRouter from './api/v1/routes/login'
+import noteRouter from './api/v1/routes/note'
+import authRouter from './api/v1/routes/auth'
 import { connection } from './db/config/connection'
 
 
@@ -30,9 +31,10 @@ app.use(cors(corsOption))
 // custom middleware logger
 app.use(logger)
 
-app.use('/api/users', userRouter)
-app.use('/api/logins', loginRouter)
-app.use('/api/notes', noteRouter)
+app.use('/api/v1/users', userRouter)
+app.use('/api/v1/logins', loginRouter)
+app.use('/api/v1/notes', noteRouter)
+app.use('/api/v1/auth', authRouter)
 
 // global error handler
 app.use('*', (err, req, res, next) => {
