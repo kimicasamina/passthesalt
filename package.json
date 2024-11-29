@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "webpack": "webpack",
-    "build": "babel ./src --out-dir ./build",
+    "build": "babel ./src --out-dir ./dist",
     "start:dev": "nodemon --exec babel-node src/index.js",
     "start": "npm run build && node ./dist/index.js",
     "clean": "npx rimraf build",
