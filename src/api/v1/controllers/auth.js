@@ -26,28 +26,29 @@ export const registerUser = async (req, res, next) => {
     const newUser = await User.create({
         username,
         email,
-        password
+        password,
     })
-    
 
-
-    return res.status(201).json({ msg: "Successfully created a new user" })
+    return res.status(201).json({ msg: 'Successfully created a new user' })
 }
 
 export const loginUser = async (req, res, next) => {
     const { email, password } = req.body
 
     try {
-        const user = await User.findOne({ where: { email: email }, includes: ['logins', 'notes'] })
+        const user = await User.findOne({
+            where: { email: email },
+            includes: ['logins', 'notes'],
+        })
 
-        if (!user){
-            console.log("CHECK IF USER EXIST")
+        if (!user) {
+            console.log('CHECK IF USER EXIST')
             return res.status(404).json({ error: 'Cannot find existing user' })
         }
         // const validPassword = await validPassword(password, user.password)
-       
-        if(!user.validPassword(password)){
-            console.log("CHECK IF USERS PASSWORD IS VALID")
+
+        if (!user.validPassword(password)) {
+            console.log('CHECK IF USERS PASSWORD IS VALID')
             return res.status(404).json({ error: 'Password does not match' })
         }
 
@@ -63,10 +64,9 @@ export const loginUser = async (req, res, next) => {
             user: {
                 uuid: user.uuid,
                 username: user.username,
-                email: user.email
+                email: user.email,
             },
         })
-
     } catch (error) {
         res.status(401).json({ error: 'fail to login' })
     }
@@ -90,7 +90,7 @@ export const getUserDetails = async (req, res, next) => {
     try {
         const user = await User.scope('withoutPassword').findOne({
             where: { id: user_token.id },
-            include: ['logins', 'notes']
+            include: ['logins', 'notes'],
         })
         return res.status(200).json({ user })
     } catch (err) {

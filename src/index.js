@@ -13,7 +13,7 @@ import loginRouter from './api/v1/routes/login'
 import noteRouter from './api/v1/routes/note'
 import authRouter from './api/v1/routes/auth'
 import { connection } from './db/config/connection'
-import { encrypt, decrypt } from './middleware/encryptionHandler'
+import verifyToken from './middleware/verifyToken'
 
 dotenv.config()
 
@@ -31,9 +31,9 @@ app.use(cors(corsOption))
 // custom middleware logger
 app.use(logger)
 
-app.use('/api/v1/users', userRouter)
-app.use('/api/v1/logins', loginRouter)
-app.use('/api/v1/notes', noteRouter)
+app.use('/api/v1/users', verifyToken, userRouter)
+app.use('/api/v1/logins', verifyToken, loginRouter)
+app.use('/api/v1/notes', verifyToken, noteRouter)
 app.use('/api/v1/auth', authRouter)
 
 // global error handler

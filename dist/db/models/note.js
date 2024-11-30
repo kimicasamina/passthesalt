@@ -18,16 +18,14 @@ function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new T
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 var _require = require('sequelize'),
   Model = _require.Model;
-var _require2 = require('../../middleware/encryptionHandler'),
-  encrypt = _require2.encrypt;
 module.exports = function (sequelize, DataTypes) {
-  var Login = /*#__PURE__*/function (_Model) {
-    function Login() {
-      _classCallCheck(this, Login);
-      return _callSuper(this, Login, arguments);
+  var Note = /*#__PURE__*/function (_Model) {
+    function Note() {
+      _classCallCheck(this, Note);
+      return _callSuper(this, Note, arguments);
     }
-    _inherits(Login, _Model);
-    return _createClass(Login, [{
+    _inherits(Note, _Model);
+    return _createClass(Note, [{
       key: "toJSON",
       value: function toJSON() {
         return _objectSpread(_objectSpread({}, this.get()), {}, {
@@ -53,7 +51,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     }]);
   }(Model);
-  Login.init({
+  Note.init({
     uuid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4
@@ -62,59 +60,33 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       unique: {
-        msg: 'Name is already taken'
+        msg: "Name is already taken"
       },
       validate: {
         notNull: {
-          msg: 'A name is required'
+          msg: "A name is required"
         },
         notEmpty: {
-          msg: 'Please provide a name'
+          msg: "Please provide a name"
         }
       }
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: {
-        msg: 'Email is already taken'
-      },
-      validate: {
-        notNull: {
-          msg: 'An email is required'
-        },
-        notEmpty: {
-          msg: 'Please provide an email'
-        },
-        isEmail: {
-          msg: 'Please use the correct email format: user@example.com'
-        }
-      }
-    },
-    password: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'A password is required'
+          msg: "A content is required"
         },
         notEmpty: {
-          msg: 'Please provide a password'
+          msg: "Please provide a content"
         }
       }
-    },
-    iv: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    website: {
-      type: DataTypes.STRING,
-      allowNull: false
     }
   }, {
     sequelize: sequelize,
-    tableName: 'logins',
-    modelName: 'Login'
+    tableName: 'notes',
+    modelName: 'Note'
   });
-  return Login;
+  return Note;
 };

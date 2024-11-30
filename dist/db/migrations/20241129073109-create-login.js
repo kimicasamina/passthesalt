@@ -35,6 +35,10 @@ module.exports = {
                 type: DataTypes.STRING,
                 allowNull: false
               },
+              iv: {
+                type: DataTypes.STRING,
+                allowNull: false
+              },
               website: {
                 type: DataTypes.STRING,
                 allowNull: false

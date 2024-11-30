@@ -30,13 +30,13 @@ export const getLoginByUuid = async (req, res, next) => {
 export const createNewLogin = async (req, res, next) => {
     const { userUuid, password } = req.body
     try {
-        const encryptedData = encrypt(password)
+        const encrypted = encrypt(password)
         const user = await User.findOne({ where: { uuid: userUuid } })
         const login = await Login.create({
             name: req.body.name,
             email: req.body.email,
-            password: encryptedData.password,
-            iv: encryptedData.iv,
+            password: encrypted.password,
+            iv: encrypted.iv,
             user_id: user.id,
             website: req.body.website,
         })
@@ -50,9 +50,6 @@ export const createNewLogin = async (req, res, next) => {
 
 export const getPassword = async (req, res, next) => {
     try {
-        const encryptedData = { iv: req.body.iv, password: req.body.password }
-        // const password = decrypt(JSON.parse(req.body))
-
         return res.status(400).json({ password: decrypt(req.body) })
     } catch (error) {
         console.log(error)
