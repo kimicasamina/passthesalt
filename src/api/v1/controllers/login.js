@@ -1,11 +1,10 @@
 import { Login, User } from '../../../db/models'
+import { encrypt, decrypt } from '../../../middleware/encryptionHandler'
 
 export const getAllLogins = async (req, res, next) => {
-
     try {
         const logins = await Login.findAll({
-            include: ['user']
-            
+            include: ['user'],
         })
         return res.json({ logins })
     } catch (error) {
@@ -15,11 +14,11 @@ export const getAllLogins = async (req, res, next) => {
 }
 
 export const getLoginByUuid = async (req, res, next) => {
-    const { uuid } = req.params.uuid
+    const { uuid } = req.params
     try {
         const login = await Login.findOne({
             where: { uuid },
-            include: ['user']
+            include: ['user'],
         })
         return res.json({ login })
     } catch (error) {
@@ -29,12 +28,32 @@ export const getLoginByUuid = async (req, res, next) => {
 }
 
 export const createNewLogin = async (req, res, next) => {
-    const { userUuid } = req.body
+    const { userUuid, password } = req.body
     try {
-        const user = await User.findOne({ where: {uuid: userUuid} })
-    const login = await Login.create({ user_id: user.id, ...req.body })
-  
-    return res.json(login)
+        const encryptedData = encrypt(password)
+        const user = await User.findOne({ where: { uuid: userUuid } })
+        const login = await Login.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: encryptedData.password,
+            iv: encryptedData.iv,
+            user_id: user.id,
+            website: req.body.website,
+        })
+
+        return res.json(login)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: error.message })
+    }
+}
+
+export const getPassword = async (req, res, next) => {
+    try {
+        const encryptedData = { iv: req.body.iv, password: req.body.password }
+        // const password = decrypt(JSON.parse(req.body))
+
+        return res.status(400).json({ password: decrypt(req.body) })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ error: error.message })
@@ -44,14 +63,17 @@ export const createNewLogin = async (req, res, next) => {
 export const updateLogin = async (req, res, next) => {
     const uuid = req.params.uuid
     try {
-    const login = await Login.findOne({ where: { uuid }, include: ['user'] })
-    login.name = req.body.name 
-    login.email = req.body.email 
-    login.password = req.body.password
-    login.website = req.body.website
+        const login = await Login.findOne({
+            where: { uuid },
+            include: ['user'],
+        })
+        login.name = req.body.name
+        login.email = req.body.email
+        login.password = req.body.password
+        login.website = req.body.website
 
-    await login.save()
-    return res.json(login)
+        await login.save()
+        return res.json(login)
     } catch (error) {
         console.log(error)
         return res.status(500).json({ error: error.message })
@@ -61,13 +83,14 @@ export const updateLogin = async (req, res, next) => {
 export const deleteLogin = async (req, res, next) => {
     const uuid = req.params.uuid
     try {
-    const login = await Login.findOne({ where: { uuid }, include: ['user'] })
-    await login.destroy()
-    return res.json({msg: "Login deleted successfully"})
+        const login = await Login.findOne({
+            where: { uuid },
+            include: ['user'],
+        })
+        await login.destroy()
+        return res.json({ msg: 'Login deleted successfully' })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ error: error.message })
     }
 }
-
-

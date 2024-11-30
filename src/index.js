@@ -13,7 +13,7 @@ import loginRouter from './api/v1/routes/login'
 import noteRouter from './api/v1/routes/note'
 import authRouter from './api/v1/routes/auth'
 import { connection } from './db/config/connection'
-
+import { encrypt, decrypt } from './middleware/encryptionHandler'
 
 dotenv.config()
 
@@ -44,8 +44,7 @@ app.use('*', (err, req, res, next) => {
 
 const server = http.createServer(app)
 
-
 server.listen(process.env.PORT, async () => {
     console.log(`Server up on http://localhost:${process.env.PORT}`)
     connection()
-});
+})
