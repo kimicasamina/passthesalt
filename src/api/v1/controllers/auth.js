@@ -36,10 +36,11 @@ export const loginUser = async (req, res, next) => {
     const { email, password } = req.body
 
     try {
-        const user = await User.findOne({
+        let user = await User.findOne({
             where: { email: email },
-            includes: ['logins', 'notes'],
+            include: ['logins', 'notes'],
         })
+        console.log('USER', user)
 
         if (!user) {
             console.log('CHECK IF USER EXIST')
@@ -52,8 +53,6 @@ export const loginUser = async (req, res, next) => {
             return res.status(404).json({ error: 'Password does not match' })
         }
 
-        console.log('valid')
-
         const token = generateToken(user.uuid)
         res.cookie('access_token', token, {
             httpOnly: true,
@@ -65,6 +64,7 @@ export const loginUser = async (req, res, next) => {
                 uuid: user.uuid,
                 username: user.username,
                 email: user.email,
+                logins: user.logins,
             },
         })
     } catch (error) {
@@ -83,14 +83,14 @@ export const logoutUser = async (req, res, next) => {
     }
 }
 
-export const getUserDetails = async (req, res, next) => {
-    let user_token = req.user
-    console.log('REQ USER_ID', user_token)
+export const getUserWithoutPassword = async (req, res, next) => {
+    let token = req.user
+    console.log('REQ USER_ID', token)
 
     try {
         const user = await User.scope('withoutPassword').findOne({
-            where: { id: user_token.id },
-            include: ['logins', 'notes'],
+            where: { uuid: token.uuid },
+            include: ['logins'],
         })
         return res.status(200).json({ user })
     } catch (err) {
