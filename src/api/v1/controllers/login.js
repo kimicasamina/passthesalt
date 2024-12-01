@@ -30,8 +30,13 @@ export const getLoginByUuid = async (req, res, next) => {
 export const createNewLogin = async (req, res, next) => {
     const { userUuid, password } = req.body
     try {
-        const encrypted = encrypt(password)
         const user = await User.findOne({ where: { uuid: userUuid } })
+
+        if (!user) {
+            return res.status(400).json({ error: 'User not found' })
+        }
+
+        const encrypted = encrypt(password)
         const login = await Login.create({
             name: req.body.name,
             email: req.body.email,
@@ -50,7 +55,12 @@ export const createNewLogin = async (req, res, next) => {
 
 export const getPassword = async (req, res, next) => {
     try {
-        return res.status(400).json({ password: decrypt(req.body) })
+        const password = decrypt({
+            iv: req.body.iv,
+            password: req.body.password,
+        })
+        return res.status(200).json({ password })
+        // return res.send(decrypt(req.body))
     } catch (error) {
         console.log(error)
         return res.status(500).json({ error: error.message })
@@ -64,9 +74,16 @@ export const updateLogin = async (req, res, next) => {
             where: { uuid },
             include: ['user'],
         })
+
+        if (!login) {
+            return res.status(400).json({ error: 'Login not found' })
+        }
+
+        const encrypted = encrypt(req.body.password)
         login.name = req.body.name
         login.email = req.body.email
-        login.password = req.body.password
+        login.password = encrypted.password
+        login.iv = encrypted.iv
         login.website = req.body.website
 
         await login.save()
