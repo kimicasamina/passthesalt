@@ -982,3 +982,13 @@ Sun 01	08:14:36 PM	2f65a67d-77a9-4020-8b7a-a8b2c4e2497a	POST	http://localhost:51
 Sun 01	08:15:56 PM	c19377ee-63d9-4392-a50a-d6ddfdeaead3	POST	http://localhost:5173	/api/v1/logins/decryptpassword/}
 Sun 01	08:16:02 PM	089e4407-8935-455c-8c20-0ef2c10f2646	POST	http://localhost:5173	/api/v1/logins/decryptpassword/}
 Sun 01	08:16:45 PM	372b0cab-1ed5-44b8-b630-ce5110dee1f0	DELETE	http://localhost:5173	/api/v1/auth/logout}
+Sun 01	09:03:46 PM	ee39df37-0bb8-4126-ac17-0bfe6dc67ecd	POST	http://localhost:5173	/api/v1/auth/login/}
+Sun 01	09:03:49 PM	b63ea1c7-060c-43c9-ab39-6dd4dbb7b869	POST	http://localhost:5173	/api/v1/logins/decryptpassword/}
+Sun 01	09:03:53 PM	3f110ba2-6d62-4e59-b52c-df76f8b8b74b	POST	http://localhost:5173	/api/v1/logins/decryptpassword/}
+Sun 01	09:03:56 PM	ca02c77c-eab9-45bf-b6c2-1b68c1c91e3e	POST	http://localhost:5173	/api/v1/logins/decryptpassword/}
+Sun 01	09:04:05 PM	4599cff9-76a8-4afd-a50c-824e6ecf5f2b	POST	http://localhost:5173	/api/v1/logins/}
+Sun 01	09:04:09 PM	d220d2f6-38d7-4a50-a584-10397864ebdb	POST	http://localhost:5173	/api/v1/logins/decryptpassword/}
+Sun 01	09:04:14 PM	0cc06a32-f297-405a-ae5d-fa8e7555e960	POST	http://localhost:5173	/api/v1/logins/decryptpassword/}
+Sun 01	09:04:14 PM	ca7767c2-7df9-4db1-bd45-20c6ab786e46	POST	http://localhost:5173	/api/v1/logins/decryptpassword/}
+Sun 01	09:04:23 PM	4166b0cc-521a-4640-9c20-2fe11fa9d752	PUT	http://localhost:5173	/api/v1/logins/64858077-347e-4fa7-bbf5-0b76a8bb4ea1}
+Sun 01	09:04:27 PM	f9bfa644-b60e-4e69-aaae-6a9f0ac7f042	DELETE	http://localhost:5173	/api/v1/logins/116d97de-a780-47f4-86c3-5638a53e2658}
