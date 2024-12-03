@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack --config webpack.dev.js --mode development",
-    "build:prod": "webpack --config webpack.prod.js --mode production",
-    "start": "nodemon dist/bundle.js",
-    "start:dev": "nodemon src/index.js"
+    "build": "webpack --config webpack.prod.js --mode production",
+    "start:dev": "nodemon src/index.js",
+    "start": "nodemon dist/bundle.js"
   },
   "keywords": [],
   "author": "",
