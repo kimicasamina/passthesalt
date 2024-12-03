@@ -101,8 +101,13 @@ export const deleteLogin = async (req, res, next) => {
             where: { uuid },
             include: ['user'],
         })
+
+        if (!login) {
+            return res.status(400).json({ error: 'Data does not exist' })
+        }
+
         await login.destroy()
-        return res.json({ msg: 'Login deleted successfully' })
+        return res.status(200).json({ msg: 'Login deleted successfully' })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ error: error.message })
