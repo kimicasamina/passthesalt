@@ -27,3 +27,4 @@ Tue 03	09:26:06 PM	0b81aa47-79c7-4ff6-821c-d83aec48a39f	GET	undefined	/api/users
 Tue 03	09:26:24 PM	292a3a64-997f-40f2-9416-4673012e7aa6	GET	undefined	/api/users/}
 Tue 03	09:31:26 PM	a7d5e9b3-e90e-4184-afbe-ac5949383827	POST	http://localhost:5173	/api/auth/register/}
 Tue 03	09:36:41 PM	0d3df98f-4531-4999-8c78-5a911a70a9e4	POST	http://localhost:5173	/api/auth/register/}
+Tue 03	10:54:48 PM	dd634add-d791-4518-b939-e764e7889744	POST	http://localhost:5173	/api/auth/register/}
