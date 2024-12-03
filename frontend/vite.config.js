@@ -22,8 +22,8 @@ export default defineConfig({
     proxy: {
       "/api": {
         target:
-          process.env.VITE_MODE === "prod"
-            ? process.env.VITE_PROD
+          process.env.VITE_MODE === "production"
+            ? process.env.VITE_HOSTNAME
             : "http://localhost:9000",
       },
 

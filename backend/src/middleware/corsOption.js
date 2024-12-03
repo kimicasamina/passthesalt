@@ -1,9 +1,13 @@
-const WHITELIST = [
-    'https://www.google.com',
-    'http://127.0.0.1:8000',
-    'http://localhost:5173',
-]
-const corsOption = {
+import dotenv from 'dotenv'
+dotenv.config()
+
+const WHITELIST = process.env.WHITELIST.split(',')
+// const WHITELIST = [
+//     'https://www.google.com',
+//     'http://127.0.0.1:8000',
+//     'http://localhost:5173',
+// ]
+export const corsOption = {
     origin: (origin, callback) => {
         if (WHITELIST.indexOf(origin) !== -1 || !origin) {
             console.log('CORS ORIGIN: ', origin)
@@ -13,5 +17,3 @@ const corsOption = {
         }
     },
 }
-
-export default corsOption

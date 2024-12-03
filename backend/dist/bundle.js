@@ -1232,9 +1232,18 @@ module.exports = db;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   corsOption: () => (/* binding */ corsOption)
 /* harmony export */ });
-var WHITELIST = ['https://www.google.com', 'http://127.0.0.1:8000', 'http://localhost:5173'];
+/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dotenv */ "dotenv");
+/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(dotenv__WEBPACK_IMPORTED_MODULE_0__);
+
+dotenv__WEBPACK_IMPORTED_MODULE_0___default().config();
+var WHITELIST = process.env.WHITELIST.split(',');
+// const WHITELIST = [
+//     'https://www.google.com',
+//     'http://127.0.0.1:8000',
+//     'http://localhost:5173',
+// ]
 var corsOption = {
   origin: function origin(_origin, callback) {
     if (WHITELIST.indexOf(_origin) !== -1 || !_origin) {
@@ -1245,7 +1254,6 @@ var corsOption = {
     }
   }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (corsOption);
 
 /***/ }),
 
@@ -1798,7 +1806,7 @@ app.use(body_parser__WEBPACK_IMPORTED_MODULE_3___default().urlencoded({
 app.use(body_parser__WEBPACK_IMPORTED_MODULE_3___default().json());
 app.use(cookie_parser__WEBPACK_IMPORTED_MODULE_4___default()());
 app.use(helmet__WEBPACK_IMPORTED_MODULE_5___default()());
-app.use(cors__WEBPACK_IMPORTED_MODULE_6___default()(_middleware_corsOption__WEBPACK_IMPORTED_MODULE_7__["default"]));
+app.use(cors__WEBPACK_IMPORTED_MODULE_6___default()(_middleware_corsOption__WEBPACK_IMPORTED_MODULE_7__.corsOption));
 
 // custom middleware logger
 app.use(_middleware_logEvents__WEBPACK_IMPORTED_MODULE_8__.logger);
