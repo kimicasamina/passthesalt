@@ -1912,3 +1912,5 @@ Tue 03	03:59:41 PM	82c73f6d-4a6c-4fe3-b813-6b2ef1a76a83	POST	http://localhost:51
 Tue 03	03:59:58 PM	9cdecf81-01b2-4a25-b0a4-1f0ad3da6b4e	POST	http://localhost:5173	/api/logins/decryptpassword/}
 Tue 03	04:00:31 PM	9ee2eb7d-ac85-4039-bf36-293147cec840	POST	http://localhost:5173	/api/logins/decryptpassword/}
 Tue 03	04:00:33 PM	73e21b06-6a3b-403a-89e3-fd177bf631db	POST	http://localhost:5173	/api/logins/decryptpassword/}
+Tue 03	04:34:04 PM	3b806c73-4bb8-435d-98eb-91091195e9fd	GET	undefined	/api/auth/}
+Tue 03	04:34:04 PM	d2df0701-fcd9-4e93-bea0-bce6228b4438	GET	undefined	/api/auth/}
