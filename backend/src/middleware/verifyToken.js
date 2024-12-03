@@ -10,7 +10,7 @@ const verifyToken = (req, res, next) => {
         next()
     } catch (error) {
         res.clearCookie('access_token')
-        res.status(401).json({ error: 'Invalid token' })
+        res.status(401).json({ error: error.stack, msg: 'Invalid Token' })
     }
 }
 

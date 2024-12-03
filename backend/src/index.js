@@ -1,6 +1,5 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import path from 'path'
 import http from 'http'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
@@ -16,7 +15,6 @@ import connection from './db/config/connection'
 import verifyToken from './middleware/verifyToken'
 
 dotenv.config()
-
 const app = express()
 
 // middlewares

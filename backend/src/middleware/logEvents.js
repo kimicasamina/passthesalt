@@ -6,13 +6,6 @@ const { mkdir, appendFile } = promises
 import { formatDate, formatDateShort } from '../utils/dateFormatter'
 import { formatTime } from '../utils/dateFormatter'
 
-// const fsPromises = fs.promises
-
-function toTimestamp(strDate) {
-    var datum = Date.parse(strDate)
-    return datum / 1000
-}
-
 export const logEvents = async (msg, logName) => {
     const d = new Date()
     console.log(formatDate(d))
