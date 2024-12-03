@@ -12,7 +12,7 @@ import userRouter from './api/v1/routes/user'
 import loginRouter from './api/v1/routes/login'
 import noteRouter from './api/v1/routes/note'
 import authRouter from './api/v1/routes/auth'
-import { connection } from './db/config/connection'
+import connection from './db/config/connection'
 import verifyToken from './middleware/verifyToken'
 
 dotenv.config()

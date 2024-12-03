@@ -1,50 +1,33 @@
-// const path = require('path')
-
-// module.exports = {
-//     entry: './src/index.js',
-//     output: {
-//         path: path.resolve(__dirname, 'dist', 'js'),
-//         filename: 'index.bundle.js',
-//     },
-//     module: {
-//         // loaders: [
-//         //     {
-//         //         exclude: /node_modules/,
-//         //         loader: 'babel-loader',
-//         //     },
-//         // ],
-//         rules: [
-//             {
-//                 test: /\.(js)$/,
-//                 exclude: /node_modules/,
-//                 use: ['babel-loader'],
-//             },
-//         ],
-//     },
-// }
-
 const path = require('path')
+const webpack = require('webpack')
+const nodeExternals = require('webpack-node-externals')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.js', // Entry point of your application
+    target: 'node', // Target environment (Node.js)
+    externals: [nodeExternals()], // Exclude node_modules from bundling
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.bundle.js',
+        filename: 'bundle.js', // Output filename
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json'],
     },
     module: {
         rules: [
             {
-                test: /\.m?js$/,
-                exclude: /(node_modules)/,
+                test: /\.js(x?)$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                    },
                 },
             },
         ],
     },
-    target: 'node',
-    mode: 'production',
+    plugins: [
+        new CleanWebpackPlugin(), // Clean the dist folder before build
+        new webpack.ProgressPlugin(),
+    ],
 }

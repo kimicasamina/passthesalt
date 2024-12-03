@@ -13,7 +13,7 @@ function toTimestamp(strDate) {
     return datum / 1000
 }
 
-const logEvents = async (msg, logName) => {
+export const logEvents = async (msg, logName) => {
     const d = new Date()
     console.log(formatDate(d))
     console.log(formatTime(d))
@@ -29,10 +29,8 @@ const logEvents = async (msg, logName) => {
         console.log(error)
     }
 }
-const logger = (req, res, next) => {
+export const logger = (req, res, next) => {
     logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`, 'reqLog.txt')
     console.log(`${req.method} ${req.path}`)
     next()
 }
-
-module.exports = { logEvents, logger }

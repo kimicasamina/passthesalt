@@ -1,7 +1,7 @@
 // import { sequelize, Sequelize } from '../models'
 import { sequelize } from '../models'
 
-export async function connection() {
+async function connection() {
     try {
         await sequelize.authenticate({ alter: true })
         console.log('Database connected successfully!')
@@ -9,3 +9,5 @@ export async function connection() {
         console.error('Unable to connect to the database:', error)
     }
 }
+
+export default connection
