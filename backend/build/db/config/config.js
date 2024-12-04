@@ -1,25 +1,30 @@
 "use strict";
 
+var dotenv = require("dotenv");
+dotenv.config();
 module.exports = {
   development: {
-    username: 'root',
-    password: 'root_password',
-    database: 'passthesalt',
-    host: '127.0.0.1',
-    dialect: 'mysql'
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: "127.0.0.1",
+    dialect: "mysql"
   },
   test: {
-    username: 'root',
+    username: "root",
     password: null,
-    database: 'database_test',
-    host: '127.0.0.1',
-    dialect: 'mysql'
+    database: "database_test",
+    host: "127.0.0.1",
+    dialect: "mysql"
   },
   production: {
-    username: 'root',
-    password: null,
-    database: 'database_production',
-    host: '127.0.0.1',
-    dialect: 'mysql'
+    url: process.env.DATABASE_URL,
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: "true",
+        "native": "true"
+      }
+    }
   }
 };
