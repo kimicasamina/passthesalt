@@ -6,7 +6,7 @@
 // const process = require('process')
 // const basename = path.basename(__filename)
 // const env = process.env.NODE_ENV || 'development'
-// const config = require(__dirname + '/../config/config.js')[env]
+// const config = require(__dirname + '../config/config.js')[env]
 // const db = {}
 
 // let sequelize
@@ -56,11 +56,7 @@ const envConfigs = require('../config/config.js')
 
 const basename = path.basename(__filename)
 const env = process.env.NODE_ENV || 'development'
-<<<<<<< HEAD
-const config = envConfigs[env]
-=======
 const config = require(__dirname + '/../config/config.js')[env]
->>>>>>> development
 const db = {}
 
 let sequelize
