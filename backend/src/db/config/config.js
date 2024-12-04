@@ -23,26 +23,30 @@
 // }
 
 module.exports = {
-    development: {
-        url: 'postgresql://passthesalt_postgres_db_user:jD9LfSFnYYOpOboUgDSv9re7TThES38e@dpg-ct7ecb5ds78s73d537p0-a.singapore-postgres.render.com/passthesalt_postgres_db',
-        dialect: 'postgres',
-        protocol: 'postgres',
-        dialectOptions: {
-            ssl: true,
-            native: true,
-        },
+  development: {
+    url: "postgresql://passthesalt_postgres_db_user:jD9LfSFnYYOpOboUgDSv9re7TThES38e@dpg-ct7ecb5ds78s73d537p0-a.singapore-postgres.render.com/passthesalt_postgres_db",
+    dialect: "postgres",
+    protocol: "postgres",
+    dialectOptions: {
+      //   ssl: true,
+      native: true,
+      ssl: {
+        require: true,
+        rejectUnauthorized: false, // Important for Render PostgreSQL
+      },
     },
-    test: {
-        url: process.env.TEST_DATABASE_URL,
-        dialect: 'postgres',
+  },
+  test: {
+    url: process.env.TEST_DATABASE_URL,
+    dialect: "postgres",
+  },
+  production: {
+    url: "postgresql://passthesalt_postgres_db_user:jD9LfSFnYYOpOboUgDSv9re7TThES38e@dpg-ct7ecb5ds78s73d537p0-a.singapore-postgres.render.com/passthesalt_postgres_db",
+    dialect: "postgres",
+    protocol: "postgres",
+    dialectOptions: {
+      ssl: true,
+      native: true,
     },
-    production: {
-        url: 'postgresql://passthesalt_postgres_db_user:jD9LfSFnYYOpOboUgDSv9re7TThES38e@dpg-ct7ecb5ds78s73d537p0-a.singapore-postgres.render.com/passthesalt_postgres_db',
-        dialect: 'postgres',
-        protocol: 'postgres',
-        dialectOptions: {
-            ssl: true,
-            native: true,
-        },
-    },
-}
+  },
+};
