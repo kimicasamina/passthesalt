@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../../context/auth";
-import {
-  formatDate,
-  formatTime,
-} from "../../../../../../../server/src/utils/dateFormatter";
+import { formatTime, formatDate } from "../../../../../utils/helper";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
