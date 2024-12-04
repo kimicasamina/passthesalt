@@ -56,7 +56,11 @@ const envConfigs = require('../config/config.js')
 
 const basename = path.basename(__filename)
 const env = process.env.NODE_ENV || 'development'
+<<<<<<< HEAD
 const config = envConfigs[env]
+=======
+const config = require(__dirname + '/../config/config.js')[env]
+>>>>>>> development
 const db = {}
 
 let sequelize

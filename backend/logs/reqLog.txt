@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Tue 03	08:45:41 PM	5e6b4a90-956f-474f-a1af-cc3dc67e7dcb	POST	undefined	/api/auth/register/}
 Tue 03	08:49:06 PM	3372837e-340a-4001-9361-8cd5188453f1	POST	undefined	/api/auth/register/}
 Tue 03	08:49:17 PM	55f99331-3ad8-4369-91b5-026e00bbc3e0	GET	undefined	/api/users/}
@@ -28,3 +29,16 @@ Tue 03	09:26:24 PM	292a3a64-997f-40f2-9416-4673012e7aa6	GET	undefined	/api/users
 Tue 03	09:31:26 PM	a7d5e9b3-e90e-4184-afbe-ac5949383827	POST	http://localhost:5173	/api/auth/register/}
 Tue 03	09:36:41 PM	0d3df98f-4531-4999-8c78-5a911a70a9e4	POST	http://localhost:5173	/api/auth/register/}
 Tue 03	10:54:48 PM	dd634add-d791-4518-b939-e764e7889744	POST	http://localhost:5173	/api/auth/register/}
+=======
+Wed 04	02:21:58 PM	43b36df1-588c-4514-954e-fbfd7b449b95	POST	undefined	/api/auth/register/}
+Wed 04	02:23:07 PM	36b2b2ba-c481-4289-af96-9f95039af025	GET	undefined	/api/users/}
+Wed 04	02:23:14 PM	e1cb0b8c-bc3a-4531-a204-d5a03ab4a154	GET	undefined	/api/auth/register/}
+Wed 04	02:23:17 PM	c01b8df4-c3af-4959-b317-ea5782b8f0c7	GET	undefined	/api/auth/register/}
+Wed 04	02:23:27 PM	a62c4c4f-7305-4720-8213-70cd9e732c92	POST	undefined	/api/auth/register/}
+Wed 04	02:23:37 PM	0ce3664b-f862-484e-8cb9-75fda5370585	POST	undefined	/api/auth/register/}
+Wed 04	03:41:17 PM	77c21c8e-30ff-4330-a595-f29e10862834	GET	undefined	/api/users/}
+Wed 04	03:43:47 PM	5e24c46b-3df7-4845-9f18-dfd22e030682	GET	undefined	/api/users/}
+Wed 04	03:55:07 PM	f8f3bcef-948c-4c81-83c1-211340efbc04	GET	undefined	/api/users/}
+Wed 04	04:37:10 PM	3cdce533-fbb5-4e22-9f03-1c369025d708	GET	undefined	/api/users/}
+Wed 04	04:42:42 PM	11534de1-ad02-4ba9-81af-d1cd9e1df455	GET	undefined	/api/users/}
+>>>>>>> development

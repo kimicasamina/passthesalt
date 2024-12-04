@@ -1,5 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
+<<<<<<< HEAD
+=======
+import path from "path";
+>>>>>>> development
 import http from "http";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -15,6 +19,10 @@ import connection from "./db/config/connection";
 import verifyToken from "./middleware/verifyToken";
 
 dotenv.config();
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
 const app = express();
 
 // middlewares
@@ -29,11 +37,15 @@ app.use(cors(corsOption));
 // custom middleware logger
 app.use(logger);
 
+<<<<<<< HEAD
 app.get("/api/", (req, res) => {
   console.log("Server is up and running...");
   return res.status(200).send("Server is up and running...");
 });
 app.use("/api/users", verifyToken, userRouter);
+=======
+app.use("/api/users", userRouter);
+>>>>>>> development
 app.use("/api/logins", verifyToken, loginRouter);
 app.use("/api/notes", verifyToken, noteRouter);
 app.use("/api/auth", authRouter);
