@@ -3,13 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-    "build": "webpack",
-    "build:dev": "webpack --config webpack.dev.js ",
-    "build:prod": "webpack --config webpack.prod.js ",
-    "start:dev": "nodemon src/index.js",
-    "start": "nodemon dist/bundle.js"
-=======
     "webpack": "webpack",
     "webpack:dev": "webpack --config webpack.dev.js --mode development",
     "webpack:prod": "webpack --config webpack.prod.js --mode production",
@@ -18,16 +11,11 @@
     "start:dev": "nodemon --exec babel-node src/index.js",
     "clean": "rm -rf build",
     "lint": "eslint"
->>>>>>> development
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
-  "description": "Passthesalt API",
-=======
   "description": "Password manager api",
->>>>>>> development
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
@@ -39,10 +27,7 @@
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.11.4",
-<<<<<<< HEAD
-=======
     "node-polyfill-webpack-plugin": "^4.0.0",
->>>>>>> development
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.5",
@@ -50,13 +35,6 @@
     "uuid": "^11.0.3"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@babel/core": "^7.26.0",
-    "@babel/preset-env": "^7.26.0",
-    "@babel/preset-react": "^7.25.9",
-    "babel-loader": "^9.2.1",
-    "clean-webpack-plugin": "^4.0.0",
-=======
     "@babel/cli": "^7.25.9",
     "@babel/core": "^7.26.0",
     "@babel/node": "^7.26.0",
@@ -66,7 +44,6 @@
     "babel-loader": "^9.2.1",
     "clean-webpack-plugin": "^4.0.0",
     "dotenv-webpack": "^8.1.0",
->>>>>>> development
     "html-webpack-plugin": "^5.6.3",
     "nodemon": "^3.1.7",
     "webpack": "^5.96.1",
