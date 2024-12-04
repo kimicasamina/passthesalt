@@ -24,12 +24,12 @@
 
 module.exports = {
   development: {
-    url: "postgresql://passthesalt_postgres_db_user:jD9LfSFnYYOpOboUgDSv9re7TThES38e@dpg-ct7ecb5ds78s73d537p0-a.singapore-postgres.render.com/passthesalt_postgres_db",
+    url: process.env.DATABASE_URL,
     dialect: "postgres",
     protocol: "postgres",
     dialectOptions: {
       //   ssl: true,
-      native: true,
+      // native: true,
       ssl: {
         require: true,
         rejectUnauthorized: false, // Important for Render PostgreSQL
@@ -41,12 +41,16 @@ module.exports = {
     dialect: "postgres",
   },
   production: {
-    url: "postgresql://passthesalt_postgres_db_user:jD9LfSFnYYOpOboUgDSv9re7TThES38e@dpg-ct7ecb5ds78s73d537p0-a.singapore-postgres.render.com/passthesalt_postgres_db",
+    url: process.env.DATABASE_URL,
     dialect: "postgres",
     protocol: "postgres",
     dialectOptions: {
-      ssl: true,
-      native: true,
+      // ssl: true,
+      // native: true,
+      ssl: {
+        require: true,
+        rejectUnauthorized: false, // Important for Render PostgreSQL
+      },
     },
   },
 };
