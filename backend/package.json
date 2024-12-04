@@ -7,7 +7,7 @@
     "webpack:dev": "webpack --config webpack.dev.js --mode development",
     "webpack:prod": "webpack --config webpack.prod.js --mode production",
     "build": "npm run clean && babel ./src --out-dir ./build",
-    "start": "npm run build && nodemon build/index.js",
+    "start": "nodemon build/index.js",
     "start:dev": "nodemon --exec babel-node src/index.js",
     "clean": "rm -rf build",
     "lint": "eslint"
