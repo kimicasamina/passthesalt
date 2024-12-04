@@ -1934,3 +1934,4 @@ Wed 04	02:57:53 PM	4763807c-038a-439b-808b-7b04ee761025	GET	undefined	/api/auth/
 Wed 04	03:17:36 PM	57a27d20-80eb-494b-99bb-4316ca87b78c	GET	undefined	/api/users/}
 Wed 04	03:17:59 PM	b3be10d9-f845-48f0-9854-585592566bf6	POST	undefined	/api/auth/login/}
 Wed 04	03:18:29 PM	ca8c5128-8695-4c13-aa99-34809a7dc3da	POST	undefined	/api/auth/register/}
+Wed 04	06:22:01 PM	172a0c5e-b6b2-4830-8435-a3b12c986736	GET	undefined	/api/users}

@@ -1,1 +1,3 @@
-Wed 04	04:44:07 PM	95faf695-7032-4614-80e3-d8b332da9031	GET	undefined	/api/users/}
+Wed 04	06:16:49 PM	a1e4335a-3e4d-48db-a699-8bd76a44deae	GET	undefined	/api/users}
+Wed 04	06:17:25 PM	6e84ee9a-ce9c-4cb4-abd8-9c8a74ce70db	POST	undefined	/api/users}
+Wed 04	06:20:07 PM	9c563267-33dc-4ded-a57a-9db7fa0b651c	GET	undefined	/api/users}
