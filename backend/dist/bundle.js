@@ -45,36 +45,37 @@ var registerUser = /*#__PURE__*/function () {
           });
         case 4:
           existingUser = _context.sent;
+          console.log('USER', existingUser);
           if (!existingUser) {
-            _context.next = 7;
+            _context.next = 8;
             break;
           }
           return _context.abrupt("return", res.status(401).json({
             error: 'User already registered. Sign in instead'
           }));
-        case 7:
-          _context.next = 9;
+        case 8:
+          _context.next = 10;
           return _db_models__WEBPACK_IMPORTED_MODULE_0__.User.create({
             username: username,
             email: email,
             password: password
           });
-        case 9:
+        case 10:
           newUser = _context.sent;
           return _context.abrupt("return", res.status(201).json({
             msg: 'Successfully created a new user'
           }));
-        case 13:
-          _context.prev = 13;
+        case 14:
+          _context.prev = 14;
           _context.t0 = _context["catch"](1);
           return _context.abrupt("return", res.status(401).json({
             error: 'Registration failed'
           }));
-        case 16:
+        case 17:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[1, 13]]);
+    }, _callee, null, [[1, 14]]);
   }));
   return function registerUser(_x, _x2, _x3) {
     return _ref.apply(this, arguments);
@@ -1023,6 +1024,38 @@ router["delete"]('/:uuid', _middleware_verifyToken__WEBPACK_IMPORTED_MODULE_2__[
 
 /***/ }),
 
+/***/ "./src/db/config/config.js":
+/*!*********************************!*\
+  !*** ./src/db/config/config.js ***!
+  \*********************************/
+/***/ ((module) => {
+
+module.exports = {
+  development: {
+    username: 'root',
+    password: 'root_password',
+    database: 'passthesalt',
+    host: '127.0.0.1',
+    dialect: 'mysql'
+  },
+  test: {
+    username: 'root',
+    password: null,
+    database: 'database_test',
+    host: '127.0.0.1',
+    dialect: 'mysql'
+  },
+  production: {
+    username: 'root',
+    password: null,
+    database: 'database_production',
+    host: '127.0.0.1',
+    dialect: 'mysql'
+  }
+};
+
+/***/ }),
+
 /***/ "./src/db/config/connection.js":
 /*!*************************************!*\
   !*** ./src/db/config/connection.js ***!
@@ -1090,7 +1123,7 @@ var Sequelize = __webpack_require__(/*! sequelize */ "sequelize");
 var process = __webpack_require__(/*! process */ "process");
 var basename = path.basename(__filename);
 var env = process.env.NODE_ENV || 'development';
-var config = __webpack_require__(/*! ./src/db/config/config.json */ "./src/db/config/config.json")[env];
+var config = __webpack_require__(/*! ./src/db/config/config.js */ "./src/db/config/config.js")[env];
 var db = {};
 var sequelize;
 if (config.use_env_variable) {
@@ -1564,17 +1597,6 @@ module.exports = require("jsonwebtoken");
 
 /***/ }),
 
-/***/ "process":
-/*!**************************!*\
-  !*** external "process" ***!
-  \**************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("process");
-
-/***/ }),
-
 /***/ "sequelize":
 /*!****************************!*\
   !*** external "sequelize" ***!
@@ -1630,14 +1652,14 @@ module.exports = require("path");
 
 /***/ }),
 
-/***/ "./src/db/config/config.json":
-/*!***********************************!*\
-  !*** ./src/db/config/config.json ***!
-  \***********************************/
+/***/ "process":
+/*!**************************!*\
+  !*** external "process" ***!
+  \**************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"development":{"username":"root","password":"root_password","database":"passthesalt","host":"127.0.0.1","dialect":"mysql"},"test":{"username":"root","password":null,"database":"database_test","host":"127.0.0.1","dialect":"mysql"},"production":{"username":"root","password":null,"database":"database_production","host":"127.0.0.1","dialect":"mysql"}}');
+module.exports = require("process");
 
 /***/ })
 

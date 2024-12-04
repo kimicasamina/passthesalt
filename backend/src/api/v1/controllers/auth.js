@@ -10,6 +10,7 @@ export const registerUser = async (req, res, next) => {
     // check if user already exists
     try {
         existingUser = await User.findOne({ where: { email } })
+        console.log('USER', existingUser)
 
         if (existingUser) {
             return res

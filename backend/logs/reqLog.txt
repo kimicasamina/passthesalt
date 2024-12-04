@@ -1,0 +1,6 @@
+Wed 04	02:21:58 PM	43b36df1-588c-4514-954e-fbfd7b449b95	POST	undefined	/api/auth/register/}
+Wed 04	02:23:07 PM	36b2b2ba-c481-4289-af96-9f95039af025	GET	undefined	/api/users/}
+Wed 04	02:23:14 PM	e1cb0b8c-bc3a-4531-a204-d5a03ab4a154	GET	undefined	/api/auth/register/}
+Wed 04	02:23:17 PM	c01b8df4-c3af-4959-b317-ea5782b8f0c7	GET	undefined	/api/auth/register/}
+Wed 04	02:23:27 PM	a62c4c4f-7305-4720-8213-70cd9e732c92	POST	undefined	/api/auth/register/}
+Wed 04	02:23:37 PM	0ce3664b-f862-484e-8cb9-75fda5370585	POST	undefined	/api/auth/register/}
